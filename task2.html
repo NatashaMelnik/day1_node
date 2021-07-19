@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+</head>
+<body>
+    <input type="text" id="number" placeholder="limit number">
+    <button type="button" onclick="main();">Get Sum</button>
+    <script>
+
+        function main(){
+            let number = +document.getElementById("number").value;
+            DisplayRes(GetSum(number));
+        }
+
+        function GetSum(lim){
+            let sum = 0;
+            for ( let i = 1; i <= lim; i++ ) {
+                sum = sum + i;
+            }
+            return sum;
+        }
+
+        function DisplayRes(res) {
+            let answer = document.createElement('div');
+            answer.innerHTML = 'sum = ' + res.toString();
+            document.body.appendChild(answer);
+        }
+
+        
+    </script>
+</body>
+</html>
