@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Intro</title>
+    <title>Task 1</title>
 </head>
 <body>
     <input type="text" id="word-input" placeholder="word">
@@ -14,11 +14,58 @@
         function getMany(){
             
             let word = document.getElementById("word-input").value;
-            let count = +document.getElementById("count-input").value;
+            let count = document.getElementById("count-input").value;
 
-            // console.log(word, count);
+            if (+count[count.length - 1] === 1){
+                console.log(word);
+            }
+            else {
+                if(word[word.length-1].toLowerCase() === 'а'){
+                    console.log(GetFemCount(word, +count[count.length - 1]));
+                    // console.log(GetFemCount(word, count));
+                }
+                if(word[word.length-1].toLowerCase() === 'е'){
+                    console.log(GetMidCount(word, +count[count.length - 1]));
+                }
+                else {
+                    // console.log(GetMuscCount(word, +count[count.length - 1]));
+                    console.log(GetMuscCount(word, count));
+                }
+            }
+        }
 
-            
+        function GetFemCount(word, count) {
+            if(count > 1 && count < 6){
+                word = word.slice(0, word.length - 1) + 'и';
+                return word;
+            }
+            else {
+                word = word.slice(0, word.length - 1);
+                return word;
+            }
+        }
+
+        function GetMidCount(word, count) {
+            if(count > 1 && count < 6){
+                word = word.slice(0, word.length - 1) + 'а';
+                return word;
+            }
+            else {
+                word = word.slice(0, word.length - 1);
+                return word;
+            }
+        }
+
+        function GetMuscCount(word, count) {
+            count = count+'';
+            if (+count[ count.length - 1]  > 4 && +(count[count.length-1] + count[count.length-2]) < 21 ) {
+                word = word + 'ов';
+                return word;
+            }
+            else {
+                word = word + 'а';
+                return word;
+            }
         }
 
     </script>

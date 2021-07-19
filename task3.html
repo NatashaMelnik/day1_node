@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+</head>
+<body>
+    <input type="text" id="fact" placeholder="number">
+    <button type="button" onclick="getFactSum();">Get Sum</button>
+    <script>
+
+        function getFactSum(){
+
+            let number = +document.getElementById("fact").value;
+            let sum = factorial(number);
+            console.log(sum);
+            
+        }
+
+        function factorial(n) {
+            return (n != 1) ? n * factorial(n - 1) : 1;
+        }
+        
+    </script>
+</body>
+</html>
