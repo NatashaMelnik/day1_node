@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Info</title>
+    <meta name="generator" content="Docusaurus v2.0.0-alpha.70">
+</head>
+<!-- <style>
+    button:hover {
+        border-color: red;
+    }
+</style> -->
+<body>
+    <script>
+        let q;
+
+        console.log('' === []);
+        console.log(undefined === q);
+        console.log('undefined === null', undefined === null);
+        console.log('undefined == null', undefined == null);
+
+
+        let name = 'Alex';
+        console.log(name);
+        name = 'Vova';
+        console.log(name);
+        name = 12 + 34;
+        console.log(name);
+
+        let alex = {
+            firstName: 'Alex',
+            lastNmae: 'Kotov',
+            email: 'alexko@in6k.com',
+            toString: function() {
+                console.log(`${this.firstName} ${this.lastNmae} <${this.email}>`);
+            }
+        }
+        console.log(alex.toString());
+        console.log(alex.firstName + ' ' + alex.lastNmae);
+        alex.firstName = 'Alexander';
+        alex.firstName += 'ander';
+        console.log(alex['firstName'] + ' ' + alex.lastNmae);
+        
+        let colors = {
+            red: '#ff0000',
+            blank: '#000000',
+            white: '#ffffff'
+        } 
+        for ( name in colors ) {
+            console.log(name + ' has code ' + colors[name].toUpperCase());
+        }
+        console.log(Object.keys(colors));
+        for ( name of Object.keys(colors) ) {
+            console.log(name);
+            console.log(name + ' has code ' + colors[name].toUpperCase());
+        }
+
+        function printContact(contact) {
+            console.log(`${contact.firstName} ${contact.lastNmae} <${contact.email}>`);
+        }
+        printContact(alex);
+
+        class Contact {
+            constructor ( firstNameObject, lastNmae, email ) {
+                if ( typeof firstNameObject === 'object' ) {
+                    Object.assign(this, firstNameObject);
+                }
+                else {
+                    this.firstName = firstNameObject;
+                    this.lastNmae = lastNmae;
+                    this.email = email;
+                }
+            }
+
+            toString() {
+                return (`${this.firstName} ${this.lastNmae} <${this.email}>`);
+            }
+        } 
+
+        let vladik = new Contact({
+            firstName: 'Vladik',
+            lastNmae: 'Nikolenko',
+            email: 'vladik@in6k.com'
+        });
+
+        console.log('' + vladik);
+
+        console.log(Math.PI.toFixed(4));
+
+    </script>
+</body>
