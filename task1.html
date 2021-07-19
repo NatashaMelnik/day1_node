@@ -8,64 +8,81 @@
 <body>
     <input type="text" id="word-input" placeholder="word">
     <input type="text" id="count-input" placeholder="count">
-    <button type="button" onclick="getMany();">Get Value</button>
+    <button type="button" onclick="main();">count</button>
     <script>
 
-        function getMany(){
+        function main(){
             
             let word = document.getElementById("word-input").value;
             let count = document.getElementById("count-input").value;
 
-            if (+count[count.length - 1] === 1){
+            GetCount( word, count );
+        }
+
+        function GetCount( word, count ) {
+            if ( +count[count.length - 1] === 1 && +count[count.length - 2] !== 1) {
                 console.log(word);
             }
             else {
-                if(word[word.length-1].toLowerCase() === 'а'){
-                    console.log(GetFemCount(word, +count[count.length - 1]));
-                    // console.log(GetFemCount(word, count));
+                let answerCount = count;
+                count = Math.abs(count) % 100; 
+                let less = count % 10;
+                let ending = word[word.length-1].toLowerCase();
+                if (ending === 'а') {
+                    DisplayRes(answerCount, GetFemCount(word, +count, less));
                 }
-                if(word[word.length-1].toLowerCase() === 'е'){
-                    console.log(GetMidCount(word, +count[count.length - 1]));
+                else if (ending === 'е') {
+                    DisplayRes(answerCount, GetMidCount(word, +count, less));
                 }
                 else {
-                    // console.log(GetMuscCount(word, +count[count.length - 1]));
-                    console.log(GetMuscCount(word, count));
+                    DisplayRes(answerCount, GetMuscCount(word, +count, less));
                 }
             }
         }
 
-        function GetFemCount(word, count) {
-            if(count > 1 && count < 6){
-                word = word.slice(0, word.length - 1) + 'и';
+        function GetFemCount(word, count, less) {
+            if (count > 10 && count < 20) { 
+                return word.slice(0, word.length - 1); 
+            }
+            if (less > 1 && less < 5) { 
+                return word.slice(0, word.length - 1) + 'и'; 
+            }
+            if (less == 1) { 
                 return word;
             }
-            else {
-                word = word.slice(0, word.length - 1);
-                return word;
-            }
+            return word.slice(0, word.length - 1);
         }
 
-        function GetMidCount(word, count) {
-            if(count > 1 && count < 6){
-                word = word.slice(0, word.length - 1) + 'а';
+        function GetMidCount(word, count, less) {
+            if (count > 10 && count < 20) { 
+                return word.slice(0, word.length - 1);
+            }
+            if (less > 1 && less < 5) { 
+                return word.slice(0, word.length - 1) + 'а'; 
+            }
+            if (less == 1) { 
                 return word;
             }
-            else {
-                word = word.slice(0, word.length - 1);
-                return word;
-            }
+            return word.slice(0, word.length - 1);
         }
 
-        function GetMuscCount(word, count) {
-            count = count+'';
-            if (+count[ count.length - 1]  > 4 && +(count[count.length-1] + count[count.length-2]) < 21 ) {
-                word = word + 'ов';
+        function GetMuscCount(word, count, less) {
+            if (count > 10 && count < 20) { 
+                return word.slice(0, word.length) + 'ов';
+            }
+            if (less > 1 && less < 5) { 
+                return word.slice(0, word.length) + 'а'; 
+            }
+            if (less == 1) { 
                 return word;
             }
-            else {
-                word = word + 'а';
-                return word;
-            }
+            return word.slice(0, word.length) + 'ов';
+        }
+
+        function DisplayRes(count, res) {
+            let answer = document.createElement('div');
+            answer.innerHTML = count + ' ' + res.toString();
+            document.body.appendChild(answer);
         }
 
     </script>
