@@ -7,19 +7,25 @@
 </head>
 <body>
     <input type="text" id="fact" placeholder="number">
-    <button type="button" onclick="getFactSum();">Get Sum</button>
+    <button type="button" onclick="main();">Get factorial</button>
     <script>
 
-        function getFactSum(){
-
+        function main(){
             let number = +document.getElementById("fact").value;
-            let sum = factorial(number);
-            console.log(sum);
-            
+            DisplayRes(number + '!=' + GetFactorial(number));
         }
 
-        function factorial(n) {
-            return (n != 1) ? n * factorial(n - 1) : 1;
+        function GetFactorial(num) {
+            for( let i = num-1; i >= 1; i--){
+                num = num * i;
+            }
+            return num;  
+        }
+
+        function DisplayRes(res) {
+            let answer = document.createElement('div');
+            answer.innerHTML = res.toString();
+            document.body.appendChild(answer);
         }
         
     </script>
